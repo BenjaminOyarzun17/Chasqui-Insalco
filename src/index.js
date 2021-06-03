@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
-import Productos from './components/productos.js';
+import Pymes from './components/Pymes.js';
 import Navegacion from './components/navegacion.js';
 
 
@@ -15,8 +15,8 @@ ReactDOM.render(
     <Router>
       
       <Switch>
-        <Route path='/productos'>
-        <Productos/>
+        <Route path='/pymes'>
+        <Pymes/>
         </Route>
         
         <Route path='/'><App /></Route>

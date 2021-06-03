@@ -1,7 +1,7 @@
 import React from 'react';
 import {Col, Row, Container, Card,Button} from 'react-bootstrap';
 
-class Producto extends React.Component {
+class Pyme extends React.Component {
     constructor(){
       super();
     }
@@ -14,12 +14,14 @@ class Producto extends React.Component {
           <Card style={{ width: '13rem' }}>
             <Card.Img variant="top" src="holder.js/100px180" />
             <Card.Body>
-              <Card.Title>Card Title</Card.Title>
+              <Card.Title>{this.props.nombre}</Card.Title>
               <Card.Text>
-                Some quick example text to build on the card title and make up the bulk of
-                the card's content.
+                {this.props.descripcion}
               </Card.Text>
-              <Button variant="primary">Go somewhere</Button>
+              <Card.Text>
+                {this.props.direccion}
+              </Card.Text>
+              <Button variant="primary" href={this.props.link}>comprar aquí</Button>
             </Card.Body>
           </Card>
      
@@ -30,4 +32,4 @@ class Producto extends React.Component {
     }
   }
 
-export default Producto;
+export default Pyme;

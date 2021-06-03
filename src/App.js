@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import Productos from './components/productos.js'
+import Pymes from './components/Pymes.js'
 
 function App() {
   const [currentTime, setCurrentTime] = useState(0);
