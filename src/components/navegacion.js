@@ -1,6 +1,6 @@
 import React from 'react';
 import {Navbar, Nav, NavDropdown,Form, FormControl, Button} from 'react-bootstrap';
-
+import {Link} from 'react-router-dom';
 
 class Navegacion extends React.Component {
     render() {
@@ -10,9 +10,10 @@ class Navegacion extends React.Component {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
-            <Nav.Link href="home">Inicio</Nav.Link>
-            <Nav.Link href="account">Mi cuenta</Nav.Link>
-            <Nav.Link href="pymes">Pymes</Nav.Link>
+            <Nav.Link ><Link to='/'>Inicio</Link></Nav.Link>
+            <Nav.Link ><Link to='/login'>Iniciar sesión</Link></Nav.Link>
+            <Nav.Link ><Link to='/register'>Registrarse</Link></Nav.Link>
+            <Nav.Link ><Link to='/pymes'>Pymes</Link></Nav.Link>
             <NavDropdown title="Otros" id="basic-nav-dropdown">
               <NavDropdown.Item href="#action/3.1">Sobre Pyme Pyme</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Contrata nuestros servicios</NavDropdown.Item>

@@ -3,7 +3,7 @@ from flask import Flask
 app = Flask(__name__)
  
 @app.route('/pymes',methods= ['GET'])
-def hello_world():
+def datosPymes():
     return {
         'pymes':[
             {'nombre':'donde Carlos',
@@ -24,6 +24,16 @@ def hello_world():
             'link':'/pymes/dondeObi'}
         ]
 }
+
+
+
+@app.route('/register',methods= ['POST'])
+def registro():
+    return 0
+
+
+
+
 
 
 
