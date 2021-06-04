@@ -5,22 +5,29 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.sqlite3'
+app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
 
-class users(db.Model):
-    _id= db.Column("id", db.Integer, primary_key=True)
+class User(db.Model):
+    id = db.Column( db.Integer, primary_key=True)
     name = db.Column(db.String(100))
     lastName = db.Column(db.String(100))
     email = db.Column(db.String(100))
     password = db.Column(db.String(100))
     direccion = db.Column(db.String(100))
-    def __init__(self, name, email, direccion):
-        self.name = name
-        self.lastName = lastName
-        self.email = email
-        self.password= password 
-        self.direccion = direccion
+    pymes = db.relationship('Pyme', backref='author', lazy=True)
+    
+    def __repr__(self):
+        return f"User('{self.name}','{self.email}')"
+
+
+class Pyme(db.Model):
+    id = db.Column(db.Integer, primary_key= True)
+    name = db.Column(db.String(100))
+    direccion = db.Column(db.String(100))
+    owner = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
+    def __repr__(self):
+        return f"Pyme('{self.name}','{self.direccion}')"
 
 
  
@@ -72,7 +79,7 @@ def register():
 
 
 if __name__== '__main__':
-    db.create_all()
+    #db.create_all()
     app.run(debug=True)
 
 
