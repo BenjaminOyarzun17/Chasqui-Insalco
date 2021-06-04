@@ -5,17 +5,21 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-
+app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///students.sqlite3'
 db = SQLAlchemy(app)
 
 class users(db.Model):
     _id= db.Column("id", db.Integer, primary_key=True)
     name = db.Column(db.String(100))
+    lastName = db.Column(db.String(100))
     email = db.Column(db.String(100))
+    password = db.Column(db.String(100))
     direccion = db.Column(db.String(100))
     def __init__(self, name, email, direccion):
         self.name = name
+        self.lastName = lastName
         self.email = email
+        self.password= password 
         self.direccion = direccion
 
 
@@ -53,6 +57,14 @@ def login():
    if request.method == 'POST':
       
       return redirect(url_for('success',name = request))
+  
+@app.route('/register',methods = ['POST', 'GET'])
+def register():
+   if request.method == 'POST':
+      data=request.form
+      nombre = data['nombre']
+
+      return redirect(url_for('success',name = data))
   
 
 
