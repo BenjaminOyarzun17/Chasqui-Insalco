@@ -9,8 +9,8 @@ class Login extends React.Component{
             <>
             <div>
             <form action="#" method='POST'>
-                <input type = 'email' placeholder='ingresar mail' value=''/>
-                <input type = 'password' placeholder='ingresar clave' value=''/>
+                <input type = 'email' placeholder='ingresar mail'  defaultValue=''/>
+                <input type = 'password' placeholder='ingresar clave'  defaultValue=''/>
                 <input type='submit' value="submit"/>
             </form> 
             </div>

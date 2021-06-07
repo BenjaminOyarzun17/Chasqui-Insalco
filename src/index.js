@@ -15,7 +15,7 @@ ReactDOM.render(
     <Navegacion></Navegacion>
 
       <Switch>
-        <Route path='/pymes'>
+      <Route path='/pymes'>
         <Pymes/>
         </Route>
         <Route path='/login'>

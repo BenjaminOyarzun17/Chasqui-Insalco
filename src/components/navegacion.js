@@ -6,7 +6,7 @@ class Navegacion extends React.Component {
     render() {
       return (
         <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="">Pyme Pyme</Navbar.Brand>
+        <Navbar.Brand href="">Chasqui</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">

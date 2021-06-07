@@ -11,9 +11,9 @@ class Registro extends React.Component{
             <Container>
                 <form action="#" method='POST'>
                     <label>Primer nombre:</label><br></br>
-                    <input type = 'text' placeholder='ingresar primer nombre' name='name' defauemailltValue=''/><br></br>
+                    <input type = 'text' placeholder='ingresar primer nombre' name='name' defaultValue=''/><br></br>
                     <label>Primer apellido:</label><br></br>
-                    <input type = 'text' placeholder='ingresar primer apellido' name='lastName' defauemailltValue=''/><br></br>
+                    <input type = 'text' placeholder='ingresar primer apellido' name='lastName' defaultValue=''/><br></br>
                     <label>Correo:</label><br></br>
                     <input type = 'email' placeholder='ingresar mail' name='email' defaultValue=''/><br></br>
                     <label>Clave:</label><br></br>
