@@ -1,114 +1,93 @@
+from enum import unique
 from flask import Flask, redirect, url_for, request,jsonify, json
+from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, login_user, login_required, UserMixin, logout_user,current_user
+from flask_bcrypt import Bcrypt
 
+import sys
 
 
 app = Flask(__name__)
+app.config['SECRET_KEY']='123456'
 app.config ['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 db = SQLAlchemy(app)
+bcrypt = Bcrypt(app)
+login_manager= LoginManager()
+login_manager.init_app(app)
+login_manager.login_view="login"
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
 
 
 
 
-
-
-class User(db.Model):
+class User(db.Model, UserMixin):
     id = db.Column( db.Integer, primary_key=True)
-    name = db.Column(db.String(100))
-    lastName = db.Column(db.String(100))
-    email = db.Column(db.String(100),nullable=False)
-    password = db.Column(db.String(100))
-    direccion = db.Column(db.String(100))
-    pymes = db.relationship('Pyme', backref='author', lazy=True)
-
-    def __repr__(self):
-        return f"User('{self.name}','{self.email}')"
-    def __init__(self, name, lastName, email, password, direccion):
-        self.name =name
-        self.lastName =lastName
-        self.email =email
+    username = db.Column(db.String(20), nullable= False)
+    email = db.Column(db.String(20), nullable= False,unique=True)
+    password = db.Column(db.String(20), nullable=False)
+    
+    #pymes = db.relationship('Pyme', backref='author', lazy=True)
+    
+    def __init__(self, username, password, email):
+        self.username =username
         self.password =password
-        self.direccion =direccion
+        self.email = email
 
-#User("benja","oyarzun","benjaoyama@gmail.com","123456", "provi")
-#User("a","b","aaa@gmail.com","123456", "prdfasfovi")
-#User("adasf","bdfs","adfsdaa@gmail.com","1234dfsd56", "prdfas23fovi")
-#User("fse","fdsf","addddaa@gmail.com","fsadfe", "uwuawa")
-#db.session.add
-
-class Pyme(db.Model):
-    id = db.Column(db.Integer, primary_key= True)
-    name= db.Column(db.String(100), nullable= False)
-    desc= db.Column(db.String(100), nullable= False)
-    dir = db.Column(db.String(100), nullable= False)
-    owner = db.Column(db.Integer, db.ForeignKey('user.id'), nullable = False)
-    
-    def __init__(self, name, desc, dir,owner):
-        self.name = name
-        self.desc= desc
-        self.dir = dir
-        self.owner = owner
-
-#Pyme("donde benja", "panaderia", "providencia", u1.id)
-#Pyme("donde Pablo", "pasteleria", "las condes", u2.id)
-#Pyme("donde Jose", "ferreteria", "la cisterna", u3.id)
-#Pyme("donde Ignacio", "verdureria", "la granja", u4.id)
-#db.session.add
-
-
-def Pyme_serializer(pyme):
-    return {
-        'id':pyme.id,
-        'name':pyme.name,
-        'des':pyme.desc,
-        'dir':pyme.dir
-    }
-
-
-@app.route('/pymes',methods= ['GET','POST'])
-def datosPymes():
-    if request.method=='POST':
-        print(type(request))
-        nombre = request.form['name']
-        pymes = Pyme.query.all()
-        render = []
-        for pyme in pymes:
-            if pyme.name== str(nombre):
-                render.append(pyme)
         
-        return jsonify([*map(Pyme_serializer, render)])
-        
-        
+#u1 = User("benja","123456","benjaoyama@gmail.com")
 
 
-    
-    else:
-        print('ok')
-        pymes = Pyme.query.all()
-        return jsonify([*map(Pyme_serializer, pymes)])
 
-@app.route('/success/<name>')
-def success(name):
-   return 'welcome %s' % name
+
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(int(user_id))
+
+
+@app.route('/success/<username>')
+def success(username):
+   return 'welcome %s' % username
 
 @app.route('/login',methods = ['POST', 'GET'])
 def login():
    if request.method == 'POST':
-     
-    return redirect(url_for('/pymes'))
-      
+    data=request.form
+    
+
+    usuario = User.query.filter_by(username=data["username"]).first()
+    if usuario:
+        #if bcrypt.check_password_hash(usuario['password']):
+        login_user(usuario)
+        return redirect(url_for('dashboard'))
+
+
+
+    return redirect(url_for('dashboard'))
+    
+@app.route('/dashboard', methods=['GET','POST'])
+def dashboard():
+    return redirect(url_for('/dashboard'))
+
+
+
 @app.route('/register',methods = ['POST', 'GET'])
 def register():
     if request.method == 'POST':
         data=request.form
-        usuario = User(name=data['name'], 
-                        lastName= data['lastName'],
+        hashed_pwd= bcrypt.generate_password_hash(data['password'])
+        new_user = User(username=data['username'],
                         email = data['email'],
-                        password = data['password'], 
-                        direccion = data['direccion'])
-        db.session.add(usuario)
+                        password= hashed_pwd
+                        )
+        db.session.add(new_user)
         db.session.commit()
-        return redirect(url_for('success',name = data['name']))
+        return redirect(url_for('/login'))
   
 
 

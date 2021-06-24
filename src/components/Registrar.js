@@ -1,26 +1,25 @@
 import React from 'react';
 import {Form, Button,} from 'react-bootstrap';
 import {Container} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
-class Registro extends React.Component{
 
+export default function Registro(){
 
-    render(){
+    
         return (
             <>
             <Container>
                 <form action="#" method='POST'>
                     <label>Primer nombre:</label><br></br>
-                    <input type = 'text' placeholder='ingresar primer nombre' name='name' defaultValue=''/><br></br>
-                    <label>Primer apellido:</label><br></br>
-                    <input type = 'text' placeholder='ingresar primer apellido' name='lastName' defaultValue=''/><br></br>
+                    <input type = 'text' placeholder='ingresar primer nombre' name='username' defaultValue=''/><br></br>
+                    
                     <label>Correo:</label><br></br>
                     <input type = 'email' placeholder='ingresar mail' name='email' defaultValue=''/><br></br>
                     <label>Clave:</label><br></br>
                     <input type = 'password' placeholder='ingresar clave' name = 'password' defaultValue=''/><br></br>
-                    <label>Direccion:</label><br></br>
-                    <input type = 'text' placeholder='ingresar direccion' name= 'direccion' defaultValue=''/><br></br>
-                    <input type='submit' value="Registrarme"/>
+                    <Link to='/login'><input type='submit' value="Registrarme"/></Link>
+                    
                 </form> 
             </Container>
             </>
@@ -28,6 +27,5 @@ class Registro extends React.Component{
 
     }
 
-}
 
-export default Registro;
+

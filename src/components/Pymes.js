@@ -2,6 +2,9 @@ import React ,{useEffect} from 'react';
 import {Col, Row, Container, Card,Button} from 'react-bootstrap';
 import Pyme from './Pyme.js';
 
+
+
+
 class Pymes extends React.Component {
   constructor(props) {
     super(props);

@@ -1,16 +1,18 @@
 import React from 'react';
 
 
-class Login extends React.Component{
 
 
-    render(){
+export default function Login(){
+
+
+    
         return (
             <>
             <div>
             <form action="#" method='POST'>
-                <input type = 'email' placeholder='ingresar mail'  defaultValue=''/>
-                <input type = 'password' placeholder='ingresar clave'  defaultValue=''/>
+                <input type = 'text' placeholder='ingresar usuario'  name = 'username' defaultValue=''/>
+                <input type = 'password' placeholder='ingresar clave' name='password' defaultValue=''/>
                 <input type='submit' value="submit"/>
             </form> 
             </div>
@@ -19,6 +21,5 @@ class Login extends React.Component{
 
     }
 
-}
 
-export default Login;
+

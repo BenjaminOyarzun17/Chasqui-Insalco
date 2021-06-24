@@ -2,11 +2,11 @@ import React from 'react';
 import {Navbar, Nav, NavDropdown,Form, FormControl, Button} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 
-class Navegacion extends React.Component {
-    render() {
+
+export default function Navegacion(){
       return (
         <Navbar bg="light" expand="lg">
-        <Navbar.Brand href="">Chasqui</Navbar.Brand>
+        <Navbar.Brand style={{marginLeft:'10px'}}>Chasqui</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="mr-auto">
@@ -18,7 +18,7 @@ class Navegacion extends React.Component {
               <NavDropdown.Item href="#action/3.1">Sobre Pyme Pyme</NavDropdown.Item>
               <NavDropdown.Item href="#action/3.2">Contrata nuestros servicios</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Contacto</NavDropdown.Item>
+             <NavDropdown.Item href="#action/3.4">Contacto</NavDropdown.Item>
             </NavDropdown>
           </Nav>
           <Form inline>
@@ -30,6 +30,5 @@ class Navegacion extends React.Component {
       
       )
     }
-  }
+  
 
-export default Navegacion;
