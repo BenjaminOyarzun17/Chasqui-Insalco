@@ -1,13 +1,21 @@
 import React from 'react';
 import { Container, Col, Row, Modal, Button} from 'react-bootstrap';
-
+import axios from 'axios';
 
 export default function DashBoard(){
-
+        const [data, setData] = useState({ hits: [] });
+    
+        useEffect(async () => {
+        const result = await axios(
+            'http://localhost:5000/dashboard',
+        );
+    
+        setData(result.data);
+        });
 
     
         return (
-            <>
+            <Container className='principal' style={{paddingTop:"60px"}}>
             <Row>
                 <Col  xs={8}>
                     <div className='DivContainerPymesCercanas'>
@@ -80,7 +88,7 @@ export default function DashBoard(){
                 </Col>
                 
             </Row>
-            </>
+            </Container>
         )
 
     }

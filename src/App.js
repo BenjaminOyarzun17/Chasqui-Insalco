@@ -12,11 +12,11 @@ function App() {
 
   return (
     <div className="principal">
-      <Container className="principal">
+      <Container style={{paddingTop:'60px'}}>
       
                 <Row>
                   <Col>
-                    <Image style={{width:'80%', height:'auto',  borderRadius: "50%"}} src='https://upload.wikimedia.org/wikipedia/commons/a/a6/Chasqui3.JPG'></Image>
+                    <Image className='ImgPerfilChasqui' src='https://upload.wikimedia.org/wikipedia/commons/a/a6/Chasqui3.JPG'></Image>
                   </Col>
                   <Col xs={8}>
                     <h1>
@@ -29,24 +29,37 @@ function App() {
                     <Row>
                       <Col>
                         <div className='DivCircular'>
-                          Barato
+                          <h2 id='fontTitulo'>Barato</h2>
+                          
                         </div>
                       </Col>
                       <Col>
                         <div className='DivCircular'>
-                         De Barrio
+                        <h2 id='fontTitulo'>De Barrio</h2>
+                         
                         </div>
                       </Col>
                       <Col>
                         <div className='DivCircular'>
-                         Conveniente
+                          <h2 id='fontTitulo'>Conveniente</h2>
                         </div>
                       </Col>
                     </Row>
                     <Container>
-                    <Button>Crear Cuenta</Button>
+                    <Container className='ContainerMainBotones'>
                     
-                    <Button>Ser un Chasqui</Button>
+                      <Row>
+                        <Col>
+                        <Button className='BtnPrincipal'>Crear Cuenta</Button>
+
+                        </Col>
+                        <Col>
+                        <Button className='BtnPrincipal'>Ser un Chasqui</Button>
+                        </Col>
+                      </Row>
+                    </Container>
+                    
+                    
                     
                     
                     </Container>
