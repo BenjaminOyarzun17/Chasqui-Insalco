@@ -20,15 +20,36 @@ class Pyme(db.Model):
         self.ubicacion=ubicacion
         self.despacho=despacho
 
-# u1= Pyme("donde Sergio", "carniceria", "providencia" , False)
+# u1= Pyme("donde Joaquin", "libreria", "las condes" , False)
+
+
+@app.route('/dashboard/<name>')
+def get_product(name):
+  pyms = Pyme.query.all()
+  laPyme = None
+  for i in pyms:
+      if i.nombre==name:
+          laPyme ={
+            "nombre":i.nombre,
+            "tipo":i.tipo,
+            "ubicacion":i.ubicacion,
+            "despacho":i.despacho
+          }
+
+
+          break
+  
+  
+  
+  return jsonify(laPyme)
+
 
 
 @app.route('/dashboard', methods = ['GET'])
 def pymes():
-    items =  [
-    { "id": "1", "name": "Apples",  "price": "2" },{ "id": "2", "name": "Peaches", "price": "5" }
-  ] 
+    
     items =[]
+    usuario = {"nombre": "benja", "correo":"benjaoyama@gmail.com", "direccion":"providencia"}
     pyms = Pyme.query.all()
     for i in pyms:
         items.append({
@@ -37,8 +58,12 @@ def pymes():
             "ubicacion":i.ubicacion,
             "despacho":i.despacho
         })
+    respuesta={
+        "usuario":usuario,
+        "pymes":items
+    }
 
-    return jsonify(items)
+    return jsonify(respuesta)#quizas sea mejor hacer un objeto?
 
 
 

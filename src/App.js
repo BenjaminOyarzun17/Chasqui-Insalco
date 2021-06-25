@@ -14,8 +14,23 @@ function App() {
       <Container style={{paddingTop:'60px'}}>
       
                 <Row>
-                  <Col>
+                  <Col id="colIzqInicio">
                     <Image className='ImgPerfilChasqui' src='https://upload.wikimedia.org/wikipedia/commons/a/a6/Chasqui3.JPG'></Image>
+
+                    <Container className='ContainerMainBotones'>
+                    
+                    
+                      
+                      <Button className='BtnPrincipal'>Crear Cuenta</Button>
+
+                      
+                      <Button className='BtnPrincipal'>Ser un Chasqui</Button>
+                     
+                      
+                  </Container>
+                  
+                  
+                  
                   </Col>
                   <Col xs={8}>
                     <h1>
@@ -45,20 +60,6 @@ function App() {
                       </Col>
                     </Row>
                     <Container>
-                    <Container className='ContainerMainBotones'>
-                    
-                      <Row>
-                        <Col>
-                        <Button className='BtnPrincipal'>Crear Cuenta</Button>
-
-                        </Col>
-                        <Col>
-                        <Button className='BtnPrincipal'>Ser un Chasqui</Button>
-                        </Col>
-                      </Row>
-                    </Container>
-                    
-                    
                     
                     
                     </Container>

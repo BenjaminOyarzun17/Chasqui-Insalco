@@ -1,24 +1,25 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-
+import {Navbar,Nav,Form, NavDropdown, FormControl, Button} from 'react-bootstrap';
 
 export default function Navegacion(){
       return (
         <>
-        <nav className="navbar navbar-expand-lg fixed-top py-3">
-        <div className="container"><a className="navbar-brand text-uppercase font-weight-bold" style={{color:'white'}}>Chasqui</a>
-            
-            
-            <div id="navbarSupportedContent" className="collapse navbar-collapse">
-                <ul className="navbar-nav ml-auto">
-                    <li className="nav-item active"><Link to='/'>Inicio </Link></li>
-                    <li className="nav-item"><Link to='/dashboard'>Dashboard</Link></li>
-                    <li className="nav-item"><Link to='/pymes'>Pymes</Link></li>
-                    
-                </ul>
-            </div>
-        </div>
-    </nav>
+        <Navbar bg="light" expand="lg">
+  <Navbar.Brand href="#home">Chasqui</Navbar.Brand>
+  <Navbar.Toggle aria-controls="basic-navbar-nav" />
+  <Navbar.Collapse id="basic-navbar-nav">
+    <Nav className="mr-auto">
+      <Nav.Link ><Link className='linkNavegacion' to='/'> Inicio</Link>  </Nav.Link>
+      <Nav.Link ><Link className='linkNavegacion'to='/dashboard'> Pymes</Link></Nav.Link>
+      
+    </Nav>
+    
+  </Navbar.Collapse>
+</Navbar>
+        
+        
+       
       </>
       )
     }

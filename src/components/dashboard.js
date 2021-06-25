@@ -7,14 +7,26 @@ import Pyme from './Pyme.js';
 export default function DashBoard(){
         const [isLoaded, setIsLoaded] = useState(false);
         const [items, setItems] = useState([]);
-
+        const [usuario, setUsuario] = useState(
+          0);
         useEffect(() => {
             fetch("/dashboard")
               .then(res => res.json())
               .then(
                 (result) => {
+                  console.log(result);
                   setIsLoaded(true);
-                  setItems(result);
+                  setItems(result.pymes);
+                }
+              )
+          }, [])
+          useEffect(() => {
+            fetch("/dashboard")
+              .then(res => res.json())
+              .then(
+                (result) => {
+                  setIsLoaded(true);
+                  setUsuario(result.usuario);
                 }
               )
           }, [])
@@ -27,6 +39,7 @@ export default function DashBoard(){
                     nombre = {item.nombre}
                     tipo = {item.tipo}
                     despacho= {item.despacho}
+                    ubicacion= {item.ubicacion}
         
                 ></Pyme>
              
@@ -34,11 +47,13 @@ export default function DashBoard(){
               )}
           );
 
-
+        if(!isLoaded){
+            return "loading..."
+        }else{
 
 
         return (
-            <Container className='principal' style={{paddingTop:"60px"}}>
+            <div className='principal' style={{paddingTop:"60px"}}>
             <Row>
                 <Col  xs={8}>
                     <div className='DivContainerPymesCercanas'>
@@ -50,30 +65,29 @@ export default function DashBoard(){
                 </Col>
                 <Col>
                     <div className="divContainerDatosPersonales">
-                      <p style={{margin:"20px"}}>
+                      
                         <h2 className='titulo'>Mi perfil</h2>
                         <div className="caracteristicaPerfil">
-                            Nombre: 
+                            Nombre: {usuario.nombre} 
                         </div>
                         <div className="caracteristicaPerfil">
-                            Correo:
-
+                            Correo:{usuario.correo} 
                         </div>
                         <div className="caracteristicaPerfil">
-                            Dirección: 
+                            Dirección: {usuario.direccion} 
 
                         </div>
                         <Button className="BtnActualizarDatos" variant="primary">Actualizar mis datos</Button>
                           
-                      </p>
+                      
                     </div>
                 </Col>
                 
             </Row>
-            </Container>
+            </div>
         )
 
     }
-
+}
 
 

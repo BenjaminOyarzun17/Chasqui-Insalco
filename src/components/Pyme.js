@@ -1,11 +1,12 @@
 import React from 'react';
 import { Container, Col, Row, Modal, Button} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 
 
 export default function Pyme(props){
       
-
+    const laStr = 'dashboard/'+ props.nombre
   
     return (
       
@@ -30,7 +31,7 @@ export default function Pyme(props){
 
             <Modal.Footer>
                 
-                <Button variant="primary">Productos</Button>
+                <Button variant="primary"><Link to={laStr}>Productos</Link></Button>
             </Modal.Footer> 
         </Modal.Dialog>
     </Container>

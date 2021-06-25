@@ -3,11 +3,20 @@
     background-color: transparent;
 
 }
+#colIzqInicio{
+  text-align: center;
+}
+
+.linkNavegacion{
+  color:black;
+  margin-left: 10px;
+}
+
 
 
 .ContainerMainBotones{
   padding:10px;
-  margin: 70px 20px 20px 20px ;
+  margin-top: 10px;
   text-align: center;
   background-color: rgb(68, 68, 68);
   border-style: solid;
@@ -27,6 +36,7 @@
 .BtnPrincipal{
   background-color: grey;
   border-color: black;
+  margin-bottom: 5px;
 }
 
 .ImgPerfilChasqui{
