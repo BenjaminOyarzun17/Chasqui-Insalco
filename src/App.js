@@ -6,7 +6,6 @@ import { Container, Col, Row,Image, Modal, Button} from 'react-bootstrap';
 
 
 function App() {
-  const [currentTime, setCurrentTime] = useState(0);
 
   
 

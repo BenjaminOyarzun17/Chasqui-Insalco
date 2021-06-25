@@ -1,25 +1,39 @@
 import React from 'react';
-import {Col, Row, Container, Card,Button} from 'react-bootstrap';
+import { Container, Col, Row, Modal, Button} from 'react-bootstrap';
 
 
 
 export default function Pyme(props){
-      return (
+      
+
+  
+    return (
       
         
-          <Card style={{ width: '13rem' }}>
-            <Card.Img variant="top" src="holder.js/100px180" />
-            <Card.Body>
-              <Card.Title>{props.nombre}</Card.Title>
-              <Card.Text>
-                {props.descripcion}
-              </Card.Text>
-              <Card.Text>
-                {props.direccion}
-              </Card.Text>
-              <Button variant="primary" href={props.link}>comprar aquí</Button>
-            </Card.Body>
-          </Card>
+        <Container className='ContainerModalDashboardPyme'>
+        <Modal.Dialog>
+            <Modal.Header >
+                <Modal.Title>{props.nombre}</Modal.Title>
+            </Modal.Header>
+
+            <Modal.Body >
+                <ul>
+                    <li>Tipo: {props.tipo}</li>
+                    <li>Despacho: {props.despacho}</li>
+                    <li>Cercanía: {
+                    props.ubicacion
+                    }</li>
+                    
+                </ul>
+                <img scr=""></img>
+            </Modal.Body>
+
+            <Modal.Footer>
+                
+                <Button variant="primary">Productos</Button>
+            </Modal.Footer> 
+        </Modal.Dialog>
+    </Container>
      
       
       

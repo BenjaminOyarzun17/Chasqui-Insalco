@@ -1,19 +1,42 @@
-import React from 'react';
+import React,{useState, useEffect} from 'react';
 import { Container, Col, Row, Modal, Button} from 'react-bootstrap';
-import axios from 'axios';
+
+import Pyme from './Pyme.js';
+
 
 export default function DashBoard(){
-        const [data, setData] = useState({ hits: [] });
-    
-        useEffect(async () => {
-        const result = await axios(
-            'http://localhost:5000/dashboard',
-        );
-    
-        setData(result.data);
-        });
+        const [isLoaded, setIsLoaded] = useState(false);
+        const [items, setItems] = useState([]);
 
-    
+        useEffect(() => {
+            fetch("/dashboard")
+              .then(res => res.json())
+              .then(
+                (result) => {
+                  setIsLoaded(true);
+                  setItems(result);
+                }
+              )
+          }, [])
+        
+          const mostrarPymes = items.map(
+            (item,i) => {
+              return ( 
+                <Pyme 
+                    key = {i}
+                    nombre = {item.nombre}
+                    tipo = {item.tipo}
+                    despacho= {item.despacho}
+        
+                ></Pyme>
+             
+              
+              )}
+          );
+
+
+
+
         return (
             <Container className='principal' style={{paddingTop:"60px"}}>
             <Row>
@@ -21,49 +44,8 @@ export default function DashBoard(){
                     <div className='DivContainerPymesCercanas'>
                         <h2>Pymes cercanas a mí</h2>
                             <Container className='ContainerModalDashboardPyme'>
-                                <Modal.Dialog>
-                                    <Modal.Header >
-                                        <Modal.Title>Donde Sergio</Modal.Title>
-                                    </Modal.Header>
-
-                                    <Modal.Body >
-                                        <ul>
-                                            <li>Tipo:</li>
-                                            <li>Despacho:</li>
-                                            <li>Cercanía:</li>
-                                            
-                                        </ul>
-                                        <img scr=""></img>
-                                    </Modal.Body>
-
-                                    <Modal.Footer>
-                                        
-                                        <Button variant="primary">Productos</Button>
-                                    </Modal.Footer> 
-                                </Modal.Dialog>
-                            </Container>
-                            <Container className='ContainerModalDashboardPyme'>
-                                <Modal.Dialog>
-                                    <Modal.Header >
-                                        <Modal.Title>Donde Ana</Modal.Title>
-                                    </Modal.Header>
-
-                                    <Modal.Body >
-                                        <ul>
-                                            <li>Tipo:</li>
-                                            <li>Despacho:</li>
-                                            <li>Cercanía:</li>
-                                            
-                                        </ul>
-                                        <img scr=""></img>
-                                    </Modal.Body>
-
-                                    <Modal.Footer>
-                                        
-                                        <Button variant="primary">Productos</Button>
-                                    </Modal.Footer> 
-                                </Modal.Dialog>
-                            </Container>
+                                {mostrarPymes}
+                            </Container>   
                     </div>
                 </Col>
                 <Col>
