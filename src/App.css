@@ -11,7 +11,24 @@
   color:black;
   margin-left: 10px;
 }
+.ContainerProducto{
+  margin-top: 10px;
+  width: 200px;
+}
 
+.ContainerPyme{
+  background: rgb(238,174,202);
+  background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(150,244,244,1) 100%);
+  padding:20px
+}
+
+
+.ContainerCarrito{
+  background-color: white;
+  padding: 10px;
+
+
+}
 
 
 .ContainerMainBotones{

@@ -14,13 +14,44 @@ class Pyme(db.Model):
     tipo = db.Column(db.String(20), nullable= False)
     ubicacion = db.Column(db.String(20), nullable=False)
     despacho = db.Column(db.Boolean, nullable=False)
+   #precioMedio = db.Column(db.Integer, nullable=True)
+    productos = db.relationship('Producto', backref='pyme', lazy=True)
+
     def __init__(self, nombre, tipo, ubicacion, despacho):
         self.nombre=nombre
         self.tipo = tipo
         self.ubicacion=ubicacion
         self.despacho=despacho
+# = Pyme("Donde Jose", "Peluquero", "La Legua", False)
 
-# u1= Pyme("donde Joaquin", "libreria", "las condes" , False)
+class Producto(db.Model):
+    id = db.Column( db.Integer, primary_key=True)
+
+    nombre = db.Column(db.String(30), nullable =False)
+    descripcion = db.Column(db.String(30), nullable =False)
+    precio = db.Column(db.Integer, nullable =False)
+    pyme_id = db.Column(db.Integer, db.ForeignKey('pyme.id'),
+        nullable=False)
+    def __init__(self, nombre, descripcion, precio, pyme_id):
+        self.nombre = nombre
+        self.descripcion = descripcion
+        self.precio = precio
+        self.pyme_id= pyme_id
+
+
+
+
+
+def obtenerProductos(listaProductos):
+    lista = []
+    for i in listaProductos:
+        lista.append({
+            "nombre":i.nombre,
+            "descripcion":i.descripcion,
+            "precio":i.precio
+        })
+    return lista
+
 
 
 @app.route('/dashboard/<name>')
@@ -33,9 +64,10 @@ def get_product(name):
             "nombre":i.nombre,
             "tipo":i.tipo,
             "ubicacion":i.ubicacion,
-            "despacho":i.despacho
+            "despacho":i.despacho,
+            "productos":obtenerProductos(i.productos)
           }
-
+  
 
           break
   
@@ -75,6 +107,7 @@ def pymes():
 if __name__== '__main__':
     db.create_all()
     app.run(debug=True)
+
 
 
 
