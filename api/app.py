@@ -15,6 +15,7 @@ class Pyme(db.Model):
     ubicacion = db.Column(db.String(20), nullable=False)
     despacho = db.Column(db.Boolean, nullable=False)
    #precioMedio = db.Column(db.Integer, nullable=True)
+   #rating = db.Column(db.Integer, nullable=True)
     productos = db.relationship('Producto', backref='pyme', lazy=True)
 
     def __init__(self, nombre, tipo, ubicacion, despacho):

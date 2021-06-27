@@ -19,14 +19,25 @@
 .ContainerPyme{
   background: rgb(238,174,202);
   background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(150,244,244,1) 100%);
-  padding:20px
+  padding:20px;
+  
 }
+.ContainerPymeBotones{
+  text-align: center;
+}
+
+.ContainerPymeBotonesBoton{
+  margin:10px
+}
+
 
 
 .ContainerCarrito{
   background-color: white;
   padding: 10px;
-
+  border-style:solid;
+  border-color: black;
+  border-radius: 25px;
 
 }
 
