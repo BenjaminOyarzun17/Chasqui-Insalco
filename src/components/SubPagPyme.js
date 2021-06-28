@@ -50,7 +50,13 @@ export default function SubPagPyme(){
     setTotal(total-carro[1]);
 
   }
-
+  const revisarDespacho=(despacho)=>{
+    if (despacho===true){
+        return "sí";
+    }else{
+        return "no";
+    }
+}
     const agregarCarrito = (nombre, precio)=>{
       setCarrito([...carrito, [nombre, precio]]);
       setTotal(total+precio);
@@ -84,6 +90,7 @@ export default function SubPagPyme(){
           precio = {producto.precio}
           agregarCarrito = {()=>agregarCarrito(producto.nombre, producto.precio)}
           key = {i}
+          imagen = {producto.imagen}
           >
           
 
@@ -106,7 +113,7 @@ export default function SubPagPyme(){
               <Col xs={8}>
               <Row>
               <Col>
-                Inserte imagen aqui
+                <img className="ImagenPyme" src={pyme.imagen}></img>
               </Col>
               
               <Col xs={6}>
@@ -116,7 +123,7 @@ export default function SubPagPyme(){
               Ubicado en: {pyme.ubicacion}<br></br>
               Índice de ahorro: <br></br>
               Teléfono:<br></br>
-              Posibilidad de despacho: 
+              Posibilidad de despacho: {revisarDespacho(pyme.despacho)}
               </Col>
               </Row>
               <h3 style={{color:'white'}}><u>Productos disponibles</u></h3>

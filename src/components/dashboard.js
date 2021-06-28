@@ -10,7 +10,7 @@ export default function DashBoard(){
         const [usuario, setUsuario] = useState(
           0);
         useEffect(() => {
-            fetch("/dashboard")
+            fetch("/pymes")
               .then(res => res.json())
               .then(
                 (result) => {
@@ -21,7 +21,7 @@ export default function DashBoard(){
               )
           }, [])
           useEffect(() => {
-            fetch("/dashboard")
+            fetch("/pymes")
               .then(res => res.json())
               .then(
                 (result) => {
@@ -40,7 +40,7 @@ export default function DashBoard(){
                     tipo = {item.tipo}
                     despacho= {item.despacho}
                     ubicacion= {item.ubicacion}
-        
+                    imagen = {item.imagen}
                 ></Pyme>
              
               
@@ -53,44 +53,25 @@ export default function DashBoard(){
 
 
         return (
-            <div className='principal' style={{paddingTop:"60px"}}>
-            <Row>
+            <div className='principal' style={{paddingTop:"10px"}}>
+            
                 
-                <Col  xs={8}>
-                    
+                
                     
                     <div className='DivContainerPymesCercanas'>
-                        <h2>Pymes cercanas a mí</h2>
-                            <Container className='ContainerModalDashboardPyme'>
+                        <h2 style={{color:'white'}}><b> <u>Pymes cercanas a mí</u></b></h2>
+                            
+                            
+                            <Row >
                                 {mostrarPymes}
-                            </Container>   
+                            </Row>   
+                    
+                    
                     </div>
                     
                     
-                </Col>
                 
                 
-                <Col>
-                    <div className="divContainerDatosPersonales">
-                      
-                        <h2 className='titulo'>Mi perfil</h2>
-                        <div className="caracteristicaPerfil">
-                            Nombre: {usuario.nombre} 
-                        </div>
-                        <div className="caracteristicaPerfil">
-                            Correo:{usuario.correo} 
-                        </div>
-                        <div className="caracteristicaPerfil">
-                            Dirección: {usuario.direccion} 
-
-                        </div>
-                        <Button className="BtnActualizarDatos" variant="primary">Actualizar mis datos</Button>
-                          
-                      
-                    </div>
-                </Col>
-                
-            </Row>
             </div>
         )
 

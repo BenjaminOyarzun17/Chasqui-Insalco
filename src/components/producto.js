@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button } from 'react-bootstrap';
+import { Img, Card, Button } from 'react-bootstrap';
 
 export default function Producto(props){
     
@@ -7,7 +7,9 @@ export default function Producto(props){
 
     return( 
     <Card className = "ContainerProducto">
+          <Card.Img variant="top" src={props.imagen}/>
         <Card.Body>
+            
             <Card.Title>{props.nombre}</Card.Title>
             <Card.Text>
             {props.descripcion}<br>

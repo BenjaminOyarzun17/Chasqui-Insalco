@@ -1,10 +1,9 @@
 import React from 'react';
 import {Col, Row} from 'react-bootstrap';
-import {Link} from 'react-router-dom';
 
 
 
-export default function UserLogin(){
+export default function PymeLogin(){
 
 
     
@@ -13,12 +12,12 @@ export default function UserLogin(){
             <div className='ContainerPyme'>
                 <Row>
                     <Col>
-                    <h1 style ={{color:'white'}}>Iniciar Sesión como usuario</h1>
+                    <h1 style ={{color:'white'}}>Iniciar Sesión como Pyme</h1>
                     <form action="#" method='POST'>
                         <input className = 'InputField' type = 'text' placeholder='ingresar usuario'  name = 'username' defaultValue=''/><br></br>
                         <input className = 'InputField' type = 'password' placeholder='ingresar clave' name='password' defaultValue=''/><br></br>
-                        <button className='BotonLogin'><Link to='/pymes'  style={{color:'white'}}>Iniciar sesión</Link></button>
-                        <button className='BotonLogin'><Link style={{color:'white'}}>Registrarme</Link></button>
+                        <input className = 'InputField'type='submit' value="Iniciar Sesión"/><br></br>
+                        <input className = 'InputField'type='submit' value="Registrarme"/><br></br>
                     </form> 
                     </Col>
                     <Col>

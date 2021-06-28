@@ -6,11 +6,20 @@ import {Link} from 'react-router-dom';
 
 export default function Pyme(props){
       
-    const laStr = 'dashboard/'+ props.nombre
-  
+    const laStr = 'pymes/'+ props.nombre
+    
+
+    const revisarDespacho=(despacho)=>{
+        if (despacho===true){
+            return "sí";
+        }else{
+            return "no";
+        }
+    }
+
     return (
       
-        
+        <Col>
         <Container className='ContainerModalDashboardPyme'>
         <Modal.Dialog>
             <Modal.Header >
@@ -18,24 +27,37 @@ export default function Pyme(props){
             </Modal.Header>
 
             <Modal.Body >
-                <ul>
-                    <li>Tipo: {props.tipo}</li>
-                    <li>Despacho: {props.despacho}</li>
-                    <li>Cercanía: {
-                    props.ubicacion
-                    }</li>
-                    
-                </ul>
-                <img scr=""></img>
-            </Modal.Body>
+                <Row>
+                    <Col sm={6}>
+                        <ul>
+                            <li>Tipo: {props.tipo}</li>
+                            <li>Despacho: {
+                                revisarDespacho(props.despacho)
+                            }
+                            
+                            </li>
+                            <li>Cercanía: {
+                            props.ubicacion
+                            }</li>
+                            
+                        </ul>
+                    </Col>
+                    <Col>
+                        <img className='ImagenPyme' src={props.imagen}></img>
+
+                    </Col>
+                </Row>
+                
+                
+            </Modal.Body> 
 
             <Modal.Footer>
                 
-                <Button variant="primary"><Link to={laStr}>Productos</Link></Button>
+                <Button variant="primary"><Link style={{color:'white'}}to={laStr}>Productos</Link></Button>
             </Modal.Footer> 
         </Modal.Dialog>
     </Container>
-     
+    </Col>
       
       
       

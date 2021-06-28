@@ -14,16 +14,16 @@ class Pyme(db.Model):
     tipo = db.Column(db.String(20), nullable= False)
     ubicacion = db.Column(db.String(20), nullable=False)
     despacho = db.Column(db.Boolean, nullable=False)
-   #precioMedio = db.Column(db.Integer, nullable=True)
-   #rating = db.Column(db.Integer, nullable=True)
+    imagen = db.Column(db.String(500), nullable=False)
     productos = db.relationship('Producto', backref='pyme', lazy=True)
 
-    def __init__(self, nombre, tipo, ubicacion, despacho):
+    def __init__(self, nombre, tipo, ubicacion, despacho, imagen):
         self.nombre=nombre
         self.tipo = tipo
         self.ubicacion=ubicacion
         self.despacho=despacho
-# = Pyme("Donde Jose", "Peluquero", "La Legua", False)
+        self.imagen = imagen
+# = Pyme("Donde Jose", "Minimercado", "Providencia" , False, "https://apollo-virginia.akamaized.net/v1/files/7os84ebvkc8q3-CO/image;s=272x0")
 
 class Producto(db.Model):
     id = db.Column( db.Integer, primary_key=True)
@@ -31,15 +31,21 @@ class Producto(db.Model):
     nombre = db.Column(db.String(30), nullable =False)
     descripcion = db.Column(db.String(30), nullable =False)
     precio = db.Column(db.Integer, nullable =False)
+    imagen = db.Column(db.String(500), nullable=False)
     pyme_id = db.Column(db.Integer, db.ForeignKey('pyme.id'),
         nullable=False)
-    def __init__(self, nombre, descripcion, precio, pyme_id):
+    
+
+
+    def __init__(self, nombre, descripcion, precio, imagen, pyme_id ):
         self.nombre = nombre
         self.descripcion = descripcion
         self.precio = precio
+        self.imagen = imagen
         self.pyme_id= pyme_id
+        
 
-
+# = Producto("Pepsi", "bebida 2L", 1000, "https://www.distribuidorasantiago.cl/wp-content/uploads/2018/12/639-BEBIDA-PEPSI.jpg", 1)
 
 
 
@@ -49,13 +55,14 @@ def obtenerProductos(listaProductos):
         lista.append({
             "nombre":i.nombre,
             "descripcion":i.descripcion,
-            "precio":i.precio
+            "precio":i.precio,
+            "imagen":i.imagen
         })
     return lista
 
 
 
-@app.route('/dashboard/<name>', methods=['GET', 'POST'])
+@app.route('/pymes/<name>', methods=['GET', 'POST'])
 def get_product(name):
   if request.method=="GET":
     
@@ -68,6 +75,7 @@ def get_product(name):
                 "tipo":i.tipo,
                 "ubicacion":i.ubicacion,
                 "despacho":i.despacho,
+                "imagen":i.imagen,
                 "productos":obtenerProductos(i.productos)
             }
     
@@ -82,7 +90,7 @@ def get_product(name):
 
 
 
-@app.route('/dashboard', methods = ['GET'])
+@app.route('/pymes', methods = ['GET'])
 def pymes():
     
     items =[]
@@ -93,7 +101,8 @@ def pymes():
             "nombre":i.nombre,
             "tipo":i.tipo,
             "ubicacion":i.ubicacion,
-            "despacho":i.despacho
+            "despacho":i.despacho,
+            "imagen":i.imagen
         })
     respuesta={
         "usuario":usuario,

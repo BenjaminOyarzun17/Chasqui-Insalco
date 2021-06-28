@@ -12,7 +12,7 @@ function App() {
 
   return (
     <div className="principal">
-      <Container style={{paddingTop:'60px'}}>
+      <Container  style={{paddingTop:'10px'}}>
       
                 <Row>
                   <Col id="colIzqInicio">
@@ -39,16 +39,11 @@ function App() {
                     </h1>
                     
                     <p style={{textAlign:'justify', fontFamily:'Calibri'}}>
-                    Chasqui es una plataforma al servicio de las pymes que busca conectarlas con clientes a la cercanía para que estos reciban sus anhelados productos tan rápido como un chasquido, sin la necesidad de costosas empresas externas. Al mismo tiempo, tiene como finalidad que las pequeñas y medianas empresas puedan hacerse un nombre en igualdad de condiciones en ausencia de empresas gigantescas. 
+                    Chasqui es una plataforma al servicio de las pymes que busca conectarlas con clientes a la cercanía para que estos reciban sus anhelados productos tan rápido como un chasquido, sin la necesidad de costosas empresas externas. Al mismo tiempo, tiene como finalidad que las pequeñas y medianas empresas puedan hacerse un nombre en igualdad de condiciones y en ausencia de empresas gigantescas. 
                     </p>
                     <Row>
                       
-                      <Col>
-                        <div className='DivCircular'>
-                        <h2 id='fontTitulo'>De Barrio</h2>
-                         
-                        </div>
-                      </Col>
+                      
                       <Col>
                         <div className='DivCircular'>
                           <h2 id='fontTitulo'><Link to='/about'>Sobre nosotros</Link></h2>

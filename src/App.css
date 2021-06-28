@@ -8,6 +8,16 @@
 }
 
 
+.ImagenPyme{
+  width: 100%;
+  height:auto;
+  border-style: solid;
+  border-color: black;
+}
+
+
+
+
 .InputField{
   margin:15px
 }
@@ -21,6 +31,23 @@
   margin-top: 10px;
   width: 200px;
 }
+
+.ContainerLogo{
+  background: rgb(2,0,36);
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(55,27,29,1) 12%, rgba(68,34,27,1) 21%, rgba(255,131,0,1) 34%, rgba(252,132,3,1) 47%, rgba(249,133,6,1) 55%, rgba(246,134,9,1) 63%, rgba(243,135,12,1) 80%, rgba(197,150,58,1) 100%, rgba(0,212,255,1) 100%);
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 5px;
+  margin-top: 15px;
+  transition: 1s;
+}.ContainerLogo:hover{
+  
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+
+}
+
+
+
 
 .ContainerPyme{
   
@@ -98,7 +125,7 @@
 .principal{
   background: rgb(2,0,36);
   background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(55,27,29,1) 12%, rgba(68,34,27,1) 21%, rgba(255,131,0,1) 34%, rgba(252,132,3,1) 47%, rgba(249,133,6,1) 55%, rgba(246,134,9,1) 63%, rgba(243,135,12,1) 80%, rgba(197,150,58,1) 100%, rgba(0,212,255,1) 100%);
-  padding-top: 30px;
+  padding-top: 10px;
   padding-bottom: 30px;
 }
 
@@ -137,8 +164,19 @@
   text-align: center;
 }
 
+.BotonLogin{
+  margin: 15px;
+  border-radius: 10px;
+  border-style: solid;
+  border-color: black;
+  background-color: grey;
+}
+
+
+
 .ContainerModalDashboardPyme{
   text-align: justify;
+  width:400px;
 }
 
 .DivCircular{
@@ -153,3 +191,4 @@
   transform: scale(1.1); 
 
 }
+
