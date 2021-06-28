@@ -55,26 +55,30 @@ def obtenerProductos(listaProductos):
 
 
 
-@app.route('/dashboard/<name>')
+@app.route('/dashboard/<name>', methods=['GET', 'POST'])
 def get_product(name):
-  pyms = Pyme.query.all()
-  laPyme = None
-  for i in pyms:
-      if i.nombre==name:
-          laPyme ={
-            "nombre":i.nombre,
-            "tipo":i.tipo,
-            "ubicacion":i.ubicacion,
-            "despacho":i.despacho,
-            "productos":obtenerProductos(i.productos)
-          }
-  
+  if request.method=="GET":
+    
+    pyms = Pyme.query.all()
+    laPyme = None
+    for i in pyms:
+        if i.nombre==name:
+            laPyme ={
+                "nombre":i.nombre,
+                "tipo":i.tipo,
+                "ubicacion":i.ubicacion,
+                "despacho":i.despacho,
+                "productos":obtenerProductos(i.productos)
+            }
+    
 
-          break
+            break
+    return jsonify(laPyme)
+
+  if request.method =="POST" :
+       return 0
+    
   
-  
-  
-  return jsonify(laPyme)
 
 
 

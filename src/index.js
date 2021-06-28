@@ -8,7 +8,7 @@ import Login from './components/Login.js';
 import Registro from './components/Registrar.js';
 import DashBoard from './components/dashboard.js';
 import SubPagPyme from './components/SubPagPyme.js'; 
-
+import About from './components/about.js'; 
 
 ReactDOM.render(
   <React.StrictMode>
@@ -26,6 +26,12 @@ ReactDOM.render(
         </Route>
         <Route path='/dashboard'>
           <DashBoard></DashBoard>
+        </Route>
+        <Route path='/about'>
+          <About></About>
+        </Route>
+        <Route path='/login'>
+          <Login></Login>
         </Route>
         <Route path='pymes/pyme'>
           <DashBoard></DashBoard>

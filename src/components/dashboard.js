@@ -55,14 +55,21 @@ export default function DashBoard(){
         return (
             <div className='principal' style={{paddingTop:"60px"}}>
             <Row>
+                
                 <Col  xs={8}>
+                    
+                    
                     <div className='DivContainerPymesCercanas'>
                         <h2>Pymes cercanas a mí</h2>
                             <Container className='ContainerModalDashboardPyme'>
                                 {mostrarPymes}
                             </Container>   
                     </div>
+                    
+                    
                 </Col>
+                
+                
                 <Col>
                     <div className="divContainerDatosPersonales">
                       

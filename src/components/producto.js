@@ -14,7 +14,7 @@ export default function Producto(props){
             </br>
             <h2>${props.precio}</h2>
             </Card.Text>
-            <Button variant="primary">Agregar al carro</Button>
+            <Button onClick= { props.agregarCarrito}  variant="primary">Agregar al carro</Button>
             
         </Card.Body>
     </Card>

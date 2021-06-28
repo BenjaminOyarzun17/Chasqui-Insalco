@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './App.css';
-
+import foto from './images/navLogo.jpeg'
 import { Container, Col, Row,Image, Modal, Button} from 'react-bootstrap';
+import {Link} from 'react-router-dom';
 
 
 
@@ -15,7 +16,7 @@ function App() {
       
                 <Row>
                   <Col id="colIzqInicio">
-                    <Image className='ImgPerfilChasqui' src='https://upload.wikimedia.org/wikipedia/commons/a/a6/Chasqui3.JPG'></Image>
+                    <Image className='ImgPerfilChasqui' src={foto}></Image>
 
                     <Container className='ContainerMainBotones'>
                     
@@ -33,20 +34,15 @@ function App() {
                   
                   </Col>
                   <Col xs={8}>
-                    <h1>
-                      Bienvenido a Chasqui
+                    <h1 style ={{fontFamily:'Lucida Handwriting'}}>
+                      ¡Bienvenido a Chasqui!
                     </h1>
                     
-                    <p style={{textAlign:'justify'}}>
-                    Chasqui es un emprendimiento al servicio de las pymes, que busca contactarla con clientes, para que estos al mismo tiempo puedan tener acceso facilitado a productos de mejor calidad y más baratos.
+                    <p style={{textAlign:'justify', fontFamily:'Calibri'}}>
+                    Chasqui es una plataforma al servicio de las pymes que busca conectarlas con clientes a la cercanía para que estos reciban sus anhelados productos tan rápido como un chasquido, sin la necesidad de costosas empresas externas. Al mismo tiempo, tiene como finalidad que las pequeñas y medianas empresas puedan hacerse un nombre en igualdad de condiciones en ausencia de empresas gigantescas. 
                     </p>
                     <Row>
-                      <Col>
-                        <div className='DivCircular'>
-                          <h2 id='fontTitulo'>Barato</h2>
-                          
-                        </div>
-                      </Col>
+                      
                       <Col>
                         <div className='DivCircular'>
                         <h2 id='fontTitulo'>De Barrio</h2>
@@ -55,7 +51,13 @@ function App() {
                       </Col>
                       <Col>
                         <div className='DivCircular'>
-                          <h2 id='fontTitulo'>Conveniente</h2>
+                          <h2 id='fontTitulo'><Link to='/about'>Sobre nosotros</Link></h2>
+                        </div>
+                      </Col>
+                      <Col>
+                        <div className='DivCircular'>
+                          <h2 id='fontTitulo'><a href='https://historia.nationalgeographic.com.es/a/chasquis-mensajeros-inca_15459'>¿Qué fue un chasqui?</a></h2>
+                          
                         </div>
                       </Col>
                     </Row>
