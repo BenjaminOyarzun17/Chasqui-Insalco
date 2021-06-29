@@ -1,0 +1,38 @@
+{
+    "ganancias":[
+        {"usuario":"Benjamin Oyarzun", 
+        "ganancia": "6000",
+        "fecha":"ayer",
+        "productos":"Pepsi (3)"},
+        {
+            "usuario":"Benjamin Oyarzun", 
+        "ganancia": "2000",
+        "fecha":"ayer",
+        "productos":"Mantequilla (3)"
+        
+
+        },{
+            "usuario":"Felipe Campos", 
+            "ganancia": "12000",
+            "fecha":"ayer",
+            "productos":"Agua (mucha)"
+        },{
+            "usuario":"Gabriel Poblete", 
+        "ganancia": "9000",
+        "fecha":"ayer",
+        "productos":"caja bon o bon"
+        }
+
+
+
+
+
+
+
+    ]
+
+
+
+
+
+}

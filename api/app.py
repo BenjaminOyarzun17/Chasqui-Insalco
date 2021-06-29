@@ -16,6 +16,10 @@ class Pyme(db.Model):
     despacho = db.Column(db.Boolean, nullable=False)
     imagen = db.Column(db.String(500), nullable=False)
     productos = db.relationship('Producto', backref='pyme', lazy=True)
+    #historia
+    #puntos reputacion
+    #ahorro esperado
+    #telefono
 
     def __init__(self, nombre, tipo, ubicacion, despacho, imagen):
         self.nombre=nombre

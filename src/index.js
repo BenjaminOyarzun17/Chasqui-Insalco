@@ -14,6 +14,7 @@ import MyAccount from './components/miCuenta.js';
 import Mipyme from './components/mipyme';
 import CrearPyme from './components/crearpyme.js';
 import AdminPyme from './components/adminPyme';
+import CompraExitosa from './components/compraExitosa';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -50,7 +51,9 @@ ReactDOM.render(
         <Route path='/crearpyme'>
           <CrearPyme></CrearPyme>
         </Route>
-
+        <Route path ='/success'>
+          <CompraExitosa></CompraExitosa>
+        </Route>
 
         <Route path = '/login'>
           <UserLogin></UserLogin>
