@@ -1,4 +1,4 @@
-from flask import Flask, redirect, url_for, request,jsonify, json
+from flask import Flask, redirect, url_for,Response, request,jsonify, json
 from flask.templating import render_template
 from flask_sqlalchemy import SQLAlchemy
 
@@ -59,7 +59,33 @@ def obtenerProductos(listaProductos):
             "imagen":i.imagen
         })
     return lista
+@app.route('/adminpyme/<name>', methods=['GET', 'POST'])
+def get_admin_pyme(name):
+    if request.method=="GET":
+        pyme = None
+        for i in Pyme.query.all():
+            if i.nombre == name:
+                pyme = i
+        laPyme ={
+                "id":pyme.id,
+                "nombre":pyme.nombre,
+                "tipo":pyme.tipo,
+                "ubicacion":pyme.ubicacion,
+                "despacho":pyme.despacho,
+                "imagen":pyme.imagen,
+                "productos":obtenerProductos(pyme.productos)
+            }
+        return jsonify(laPyme)
+    if request.method =='POST':
+        datos = request.get_json()
+        info = {"nombre":datos["nombre"], "descripcion":datos["descripcion"],"precio":int(datos["precio"]),
+         "imagen":datos["imagen"], "id":int(datos["id"])}
+        np = Producto(info["nombre"], info["descripcion"], info["precio"],info["imagen"],info["id"])
+        db.session.add(np)
+        db.session.commit()
 
+
+        return "producto creado"
 
 
 @app.route('/pymes/<name>', methods=['GET', 'POST'])
@@ -87,7 +113,30 @@ def get_product(name):
        return 0
     
   
+@app.route('/crearpyme',methods=['POST'])
+def crearpyme():
+    if request.method == 'POST':
+      datos = request.get_json()
+      
+      
+      
+      nueva = Pyme(datos["nombre"], datos["tipo"],datos["ubicacion"], True,datos["imagen"])    
+      db.session.add(nueva)
+      db.session.commit()
+      return redirect("http://localhost:3000/")
 
+
+@app.route("/pymelogin", methods = ["POST"])
+def loginpyme():
+    if request.method=="POST":
+        datos = request.get_json()
+        
+        pyme = None
+        
+        for i in Pyme.query.all():
+            if i.nombre == datos["nombre"]:
+                pyme = i
+        return redirect("http://localhost:3000/adminpyme/"+pyme.nombre)
 
 
 @app.route('/pymes', methods = ['GET'])

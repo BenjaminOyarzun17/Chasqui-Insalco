@@ -11,7 +11,9 @@ import DashBoard from './components/dashboard.js';
 import SubPagPyme from './components/SubPagPyme.js'; 
 import About from './components/about.js'; 
 import MyAccount from './components/miCuenta.js';
-
+import Mipyme from './components/mipyme';
+import CrearPyme from './components/crearpyme.js';
+import AdminPyme from './components/adminPyme';
 
 ReactDOM.render(
   <React.StrictMode>
@@ -27,6 +29,12 @@ ReactDOM.render(
           
           ></SubPagPyme>
         </Route>
+        <Route path='/adminpyme/:name'>
+          <AdminPyme
+          ></AdminPyme>
+        </Route>
+
+
         <Route path='/pymes'>
           <DashBoard></DashBoard>
         </Route>
@@ -36,6 +44,14 @@ ReactDOM.render(
         <Route path='/pymelogin'>
           <PymeLogin></PymeLogin>
         </Route>
+        <Route path='/mipyme'>
+          <Mipyme></Mipyme>
+        </Route>
+        <Route path='/crearpyme'>
+          <CrearPyme></CrearPyme>
+        </Route>
+
+
         <Route path = '/login'>
           <UserLogin></UserLogin>
         </Route>
