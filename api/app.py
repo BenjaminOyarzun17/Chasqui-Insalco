@@ -129,15 +129,15 @@ def crearpyme():
 @app.route("/pymelogin", methods = ["POST"])
 def loginpyme():
     if request.method=="POST":
-        datos = request.get_json()
-        
+        datos = request.get_json(force=True)
+
         pyme = None
         
         for i in Pyme.query.all():
             if i.nombre == datos["nombre"]:
                 pyme = i
         return redirect("http://localhost:3000/adminpyme/"+pyme.nombre)
-
+        
 
 @app.route('/pymes', methods = ['GET'])
 def pymes():

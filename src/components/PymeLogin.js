@@ -1,11 +1,27 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Col, Row, Button} from 'react-bootstrap';
-
+import Axios from 'axios';
 import {Link} from 'react-router-dom';
 
 
-export default function PymeLogin(){
 
+
+export default function PymeLogin(){
+    const url="localhost:3000/pymelogin";
+    const [data, setData] = useState({
+        nombre: "",
+        clave:""
+    })
+    function handle(e){
+        const newdata= {...data};
+        newdata[e.target.id] = e.target.value;
+        setData(newdata);
+    }
+    function submit(e){
+        Axios.post(url,{
+            nombre:data.nombre
+        })
+    }
 
     
         return (
@@ -14,11 +30,11 @@ export default function PymeLogin(){
                 <Row>
                     <Col>
                     <h1 style ={{color:'white'}}>Iniciar Sesión como Pyme</h1>
-                    <form action="#" method='POST'>
-                        <input className = 'InputField' type = 'text' placeholder='ingresar usuario'  name = "nombre" defaultValue=''/><br></br>
-                        <input className = 'InputField' type = 'password' placeholder='ingresar clave' name='password' defaultValue=''/><br></br>
-                        <input type="submit" value="iniciar sesion"></input>
-                        <button className='BotonLogin'><Link to='/crearpyme' style={{color:'white'}}>Registrarme</Link></button>
+                    <form onSubmit={(e)=>submit(e)}>
+                        <input onChange={(e)=>handle(e)} id="nombre" value={data.nombre} placeholder="nombre" type="text"></input>
+                        <input onChange={(e)=>handle(e)} id="clave" value={data.clave} placeholder="password" type="password"></input>
+                        <button><Link to={'adminpyme/'+data.nombre}>Submit</Link></button>
+
                     </form> 
                     </Col> 
                     <Col>
