@@ -1,7 +1,7 @@
 import React,{ useEffect} from 'react';
 import {Link,useLocation} from 'react-router-dom';
 import {Navbar,Nav,Form, NavDropdown, FormControl, Button} from 'react-bootstrap';
-import logoNav from '../images/navLogo.jpeg';
+import logoNav from '../images/navLogo.png';
 
 
 

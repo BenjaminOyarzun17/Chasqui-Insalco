@@ -59,7 +59,7 @@ def obtenerProductos(listaProductos):
             "imagen":i.imagen
         })
     return lista
-@app.route('/adminpyme/<name>', methods=['GET', 'POST'])
+@app.route('/adminpyme/<name>', methods=['GET', 'POST', 'DELETE'])
 def get_admin_pyme(name):
     if request.method=="GET":
         pyme = None
@@ -84,6 +84,24 @@ def get_admin_pyme(name):
         db.session.add(np)
         db.session.commit()
         return redirect("http://localhost:3000/adminpyme/"+name)
+    if request.method == 'DELETE':
+        datos = request.get_json()
+        pyme = None
+        for i in Pyme.query.all():
+            if i.nombre == name:
+                pyme = i
+        for prod in pyme.productos:
+            if str(prod.nombre) == str(datos["producto"]):
+                
+                db.session.delete(prod)
+                db.session.commit()
+                
+        return redirect("http://localhost:3000/adminpyme/"+name)
+                
+        
+        
+
+
 
 @app.route('/pymes/<name>', methods=['GET', 'POST'])
 def get_product(name):

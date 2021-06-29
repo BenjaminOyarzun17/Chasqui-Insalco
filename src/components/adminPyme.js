@@ -6,6 +6,8 @@ import Producto from './producto.js';
 import { propTypes } from 'react-bootstrap/esm/Image';
 import ProductoAdmin from './productoadmin.js';
 
+import axios from 'axios';
+
 export default function AdminPyme(){
   let location = useLocation();
   
@@ -26,6 +28,13 @@ export default function AdminPyme(){
           }
         )
     }, [])
+
+    function deleteProduct(nombre) 
+    {
+      let borrar= {"producto":nombre}
+      axios.delete(location.pathname, { data: borrar}).then(window.location.reload())
+      
+    }
     const mostrarProductos = productos.map(
       (producto,i) => {
         return ( 
@@ -36,6 +45,7 @@ export default function AdminPyme(){
           precio = {producto.precio}
           key = {i}
           imagen = {producto.imagen}
+          deleteProduct = {()=>deleteProduct(producto.nombre)}
           >
           
 
@@ -44,7 +54,9 @@ export default function AdminPyme(){
         
         )}
     );
-
+   
+    
+    
 
     if(!isLoaded){
       return 'loading...'

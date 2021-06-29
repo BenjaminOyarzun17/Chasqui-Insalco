@@ -16,7 +16,7 @@ export default function ProductoAdmin(props){
             </br>
             <h2>${props.precio}</h2>
             </Card.Text>
-            <Button  variant="primary">Eliminar</Button>
+            <Button onClick={props.deleteProduct} variant="primary">Eliminar</Button>
             
         </Card.Body>
     </Card>

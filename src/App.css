@@ -11,8 +11,12 @@
 .ImagenPyme{
   width: 100%;
   height:auto;
-  border-style: solid;
-  border-color: black;
+
+}
+
+.ImagenPymeInicial{
+  width: 100%;
+  height:auto;
 }
 
 
@@ -54,9 +58,8 @@
   
   padding:20px;
 
-  background: rgb(255,225,199);
-  background: linear-gradient(168deg, rgba(255,225,199,1) 6%, rgba(138,48,48,1) 100%);
-  
+  background: rgb(238,174,202);
+  background: linear-gradient(167deg, rgba(238,174,202,1) 0%, rgba(244,164,133,1) 30%, rgba(247,159,96,1) 56%, rgba(255,146,9,1) 100%); 
 }
 .ContainerPymeBotones{
   text-align: center;
@@ -178,6 +181,21 @@
 .ContainerModalDashboardPyme{
   text-align: justify;
   width:400px;
+  margin: 0px;
+  transition: 1s;
+}.ContainerModalDashboardPyme:hover{
+  transform: scale(1.1); 
+
+}
+
+.ContainerModalDashboardPymeInicio{
+  text-align: justify;
+  width:200px;
+  margin: 0px;
+  transition: 1s;
+}.ContainerModalDashboardPymeInicio:hover{
+  transform: scale(1.1); 
+
 }
 
 .DivCircular{
