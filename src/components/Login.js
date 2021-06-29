@@ -13,7 +13,7 @@ export default function UserLogin(){
             <div className='ContainerPyme'>
                 <Row>
                     <Col>
-                    <h1 style ={{color:'white'}}>Iniciar Sesión como usuario</h1>
+                    <h1 style ={{color:'black'}}>Iniciar Sesión como usuario</h1>
                     <form action="#" method='POST'>
                         <input className = 'InputField' type = 'text' placeholder='ingresar usuario'  name = 'username' defaultValue=''/><br></br>
                         <input className = 'InputField' type = 'password' placeholder='ingresar clave' name='password' defaultValue=''/><br></br>

@@ -11,7 +11,7 @@ function App() {
   
 
   return (
-    <div className="principal">
+    <div className="ContainerPyme">
       <Container  style={{paddingTop:'10px'}}>
       
                 <Row>

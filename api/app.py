@@ -77,16 +77,13 @@ def get_admin_pyme(name):
             }
         return jsonify(laPyme)
     if request.method =='POST':
-        datos = request.get_json()
+        datos = request.form
         info = {"nombre":datos["nombre"], "descripcion":datos["descripcion"],"precio":int(datos["precio"]),
          "imagen":datos["imagen"], "id":int(datos["id"])}
         np = Producto(info["nombre"], info["descripcion"], info["precio"],info["imagen"],info["id"])
         db.session.add(np)
         db.session.commit()
-
-
-        return "producto creado"
-
+        return redirect("http://localhost:3000/adminpyme/"+name)
 
 @app.route('/pymes/<name>', methods=['GET', 'POST'])
 def get_product(name):
@@ -116,14 +113,14 @@ def get_product(name):
 @app.route('/crearpyme',methods=['POST'])
 def crearpyme():
     if request.method == 'POST':
-      datos = request.get_json()
+      datos = request.form
       
       
       
       nueva = Pyme(datos["nombre"], datos["tipo"],datos["ubicacion"], True,datos["imagen"])    
       db.session.add(nueva)
       db.session.commit()
-      return redirect("http://localhost:3000/")
+      return redirect("http://localhost:3000/pymelogin")
 
 
 @app.route("/pymelogin", methods = ["POST"])

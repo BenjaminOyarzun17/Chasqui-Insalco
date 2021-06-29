@@ -32,8 +32,9 @@ export default function PymeLogin(){
                     <h1 style ={{color:'white'}}>Iniciar Sesión como Pyme</h1>
                     <form onSubmit={(e)=>submit(e)}>
                         <input onChange={(e)=>handle(e)} id="nombre" value={data.nombre} placeholder="nombre" type="text"></input>
-                        <input onChange={(e)=>handle(e)} id="clave" value={data.clave} placeholder="password" type="password"></input>
+                        <input onChange={(e)=>handle(e)} id="clave" value={data.clave} placeholder="password" type="password"></input><br></br>
                         <button><Link to={'adminpyme/'+data.nombre}>Submit</Link></button>
+                        <button><Link to='/crearpyme'>Crear Pyme</Link></button>
 
                     </form> 
                     </Col> 
