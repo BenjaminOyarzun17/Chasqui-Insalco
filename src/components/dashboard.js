@@ -40,6 +40,7 @@ export default function DashBoard(){
                     tipo = {item.tipo}
                     despacho= {item.despacho}
                     ubicacion= {item.ubicacion}
+                    reputacion={item.reputacion}
                     imagen = {item.imagen}
                 ></Pyme>
              

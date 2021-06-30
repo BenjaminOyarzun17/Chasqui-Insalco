@@ -16,17 +16,21 @@ class Pyme(db.Model):
     despacho = db.Column(db.Boolean, nullable=False)
     imagen = db.Column(db.String(500), nullable=False)
     productos = db.relationship('Producto', backref='pyme', lazy=True)
-    #historia
-    #puntos reputacion
-    #ahorro esperado
-    #telefono
+    historia = db.Column(db.String(1000), nullable=False)
+    reputacion = db.Column(db.Integer,nullable=False)
+    ahorro = db.Column(db.Integer,nullable=False)
+    telefono = db.Column(db.Integer,nullable=False)
 
-    def __init__(self, nombre, tipo, ubicacion, despacho, imagen):
+    def __init__(self, nombre, tipo, ubicacion, despacho, imagen, historia,reputacion, ahorro,telefono):
         self.nombre=nombre
         self.tipo = tipo
         self.ubicacion=ubicacion
         self.despacho=despacho
         self.imagen = imagen
+        self.historia = historia
+        self.reputacion = reputacion
+        self.ahorro = ahorro
+        self.telefono = telefono
 # = Pyme("Donde Jose", "Minimercado", "Providencia" , False, "https://apollo-virginia.akamaized.net/v1/files/7os84ebvkc8q3-CO/image;s=272x0")
 
 class Producto(db.Model):
@@ -77,7 +81,11 @@ def get_admin_pyme(name):
                 "ubicacion":pyme.ubicacion,
                 "despacho":pyme.despacho,
                 "imagen":pyme.imagen,
-                "productos":obtenerProductos(pyme.productos)
+                "productos":obtenerProductos(pyme.productos), 
+                "historia":pyme.historia, 
+                "reputacion":pyme.reputacion, 
+                "ahorro":pyme.ahorro,
+                "telefono":pyme.telefono
             }
         return jsonify(laPyme)
     if request.method =='POST':
@@ -121,7 +129,11 @@ def get_product(name):
                 "ubicacion":i.ubicacion,
                 "despacho":i.despacho,
                 "imagen":i.imagen,
-                "productos":obtenerProductos(i.productos)
+                "productos":obtenerProductos(i.productos), 
+                "historia":i.historia, 
+                "reputacion":i.reputacion, 
+                "ahorro":i.ahorro,
+                "telefono":i.telefono
             }
     
 
@@ -139,7 +151,7 @@ def crearpyme():
       
       
       
-      nueva = Pyme(datos["nombre"], datos["tipo"],datos["ubicacion"], True,datos["imagen"])    
+      nueva = Pyme(datos["nombre"], datos["tipo"],datos["ubicacion"], True,datos["imagen"], datos["historia"], int(datos["reputacion"]),int(datos["ahorro"]),int(datos["telefono"]))    
       db.session.add(nueva)
       db.session.commit()
       return redirect("http://localhost:3000/pymelogin")
@@ -170,7 +182,12 @@ def pymes():
             "tipo":i.tipo,
             "ubicacion":i.ubicacion,
             "despacho":i.despacho,
-            "imagen":i.imagen
+            "imagen":i.imagen,
+            "productos":obtenerProductos(i.productos), 
+            "historia":i.historia, 
+            "reputacion":i.reputacion, 
+            "ahorro":i.ahorro,
+            "telefono":i.telefono
         })
     respuesta={
         "usuario":usuario,

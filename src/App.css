@@ -1,3 +1,23 @@
+label{
+  display:inline-block;
+  width:200px;
+  margin-right:30px;
+  text-align:right;
+  }
+  
+  input{
+  
+  }
+  
+  fieldset{
+  border:none;
+  width:500px;
+  margin:0px auto;
+  }
+  
+
+
+
 .ContainerDatosPymeAdmin{
   background-color:white;
    padding:10px;
@@ -83,7 +103,9 @@
 .ContainerPymeBotonesBoton{
   margin:10px
 }
-
+.checked {
+  color: white;
+}
 
 
 .ContainerCarrito{

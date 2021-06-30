@@ -65,7 +65,7 @@ function App() {
                     
                   </Col>
                 </Row>
-                <h1 style={{marginTop:"10px"}}>Pymes famosas</h1>
+                <h1 style={{marginTop:"10px"}}>Pymes recomendadas</h1>
                 <Row>
                   
                   {mostrarPymes}

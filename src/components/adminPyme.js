@@ -92,7 +92,9 @@ export default function AdminPyme(){
             <p >
             Pyme: {pyme.nombre}<br></br>
             Tipo: {pyme.tipo}<br></br>
-            Ubicacion: {pyme.ubicacion}
+            Ubicacion: {pyme.ubicacion}<br></br>
+            <p style={{textAlign:'justify'}}>Historia: {pyme.historia}</p><br></br>
+            Telefono: +{pyme.telefono}<br></br>
                 </p>
             <Button>Editar datos</Button>
               </Col>

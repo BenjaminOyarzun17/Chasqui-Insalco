@@ -36,6 +36,7 @@ export default function Pyme(props){
                             }
                             
                             </li>
+                            <li>Reputación: {props.reputacion}</li>
                             <li>Cercanía: {
                             props.ubicacion
                             }</li>
